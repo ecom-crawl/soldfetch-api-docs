@@ -1,0 +1,12 @@
+---
+title: "Move an existing eBay integration"
+description: "Reuse familiar paths while accounting for behavior differences."
+---
+
+SoldFetch shares core endpoint paths with SoldComps, including `/v1/scrape`, `/v1/scrape/category`, and `/v1/item/{itemId}`. Shared paths do not guarantee identical parameters, response shapes, or data quality. Use a SoldFetch API key and verify the [OpenAPI contract](https://soldfetch.com/api/v1/openapi.json).
+
+The `/public/scrape` and `/rapidapi/scrape-ebay` aliases require the same SoldFetch authentication. RapidAPI gateway authentication is unavailable.
+
+Verified sale-date filters, accepted-offer enrichment, emailed exports, seller-type filtering, condition IDs, aspect filters, non-default item-location filtering, and distance sorting are unsupported. Do not silently drop these filters when migrating. `exactMatch` does not guarantee exact product identity. Search counts are capped at 200 per page.
+
+Check [capabilities](https://soldfetch.com/v1/capabilities), [data quality](/concepts/data-quality), and [errors](/concepts/errors) before switching production traffic. SoldFetch is not affiliated with eBay or SoldComps.

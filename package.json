@@ -1,0 +1,9 @@
+{
+  "name": "soldfetch-api-docs",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/validate.mjs",
+    "check": "node scripts/validate.mjs",
+    "check:live": "node scripts/validate.mjs --live"
+  }
+}

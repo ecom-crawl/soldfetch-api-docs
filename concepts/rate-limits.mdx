@@ -1,0 +1,10 @@
+---
+title: "Rate limits"
+description: "Bound concurrency and handle throttling."
+---
+
+All plans allow 60 data requests per minute and five concurrent data requests per workspace. Multiple keys do not multiply these limits. Usage and request history share a separate 60-per-minute account limit.
+
+Handle HTTP 429 explicitly. Honor `Retry-After` when returned. Use bounded backoff with jitter for transient failures; do not retry authentication, invalid inputs, unsupported capabilities, or exhausted quota indefinitely.
+
+Keep one idempotency key for retries of the same REST data request. Use a client timeout long enough for the API's request window, and record `X-Request-Id` when contacting support.

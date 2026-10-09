@@ -1,0 +1,143 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "SoldFetch",
+  "theme": "almond",
+  "colors": {
+    "primary": "#447B39",
+    "light": "#8AB54C",
+    "dark": "#336B36"
+  },
+  "logo": {
+    "light": "/logo/soldfetch-light.svg",
+    "dark": "/logo/soldfetch-dark.svg",
+    "href": "https://soldfetch.com"
+  },
+  "favicon": "/soldfetch-icon.svg",
+  "fonts": {
+    "family": "Inter"
+  },
+  "background": {
+    "color": {
+      "light": "#FCFDF8",
+      "dark": "#102D1C"
+    }
+  },
+  "api": {
+    "openapi": "openapi.json",
+    "playground": {
+      "display": "interactive"
+    },
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript"
+      ],
+      "defaults": "required",
+      "prefill": true,
+      "autogenerate": true
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "authentication"
+            ]
+          },
+          {
+            "group": "Core concepts",
+            "pages": [
+              "concepts/interfaces",
+              "concepts/marketplaces",
+              "concepts/data-quality",
+              "concepts/pagination",
+              "concepts/units-and-billing",
+              "concepts/rate-limits",
+              "concepts/errors"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/sold-comparables",
+              "guides/price-monitoring",
+              "guides/background-searches",
+              "guides/bulk-search",
+              "guides/ai-agents",
+              "guides/compatibility"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Listings",
+            "pages": [
+              "api-reference/search",
+              "api-reference/category",
+              "api-reference/item"
+            ]
+          },
+          {
+            "group": "Account and availability",
+            "pages": [
+              "api-reference/capabilities",
+              "api-reference/usage",
+              "api-reference/requests"
+            ]
+          },
+          {
+            "group": "Jobs and bulk search",
+            "pages": [
+              "api-reference/start-job",
+              "api-reference/job-results",
+              "api-reference/cancel-job",
+              "api-reference/download-job",
+              "api-reference/bulk-search"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Status",
+        "href": "https://soldfetch.com/status"
+      },
+      {
+        "label": "Support",
+        "href": "https://soldfetch.com/contact"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get API key",
+      "href": "https://soldfetch.com/auth/login?next=/dashboard"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://soldfetch.com",
+      "github": "https://github.com/ricciflow-api"
+    }
+  },
+  "description": "Search eBay sold and active listings, retrieve item details, and build resale research workflows with REST and MCP.",
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.soldfetch.com"
+    }
+  }
+}

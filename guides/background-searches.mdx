@@ -1,0 +1,17 @@
+---
+title: "Background searches and exports"
+description: "Start, inspect, and cancel bounded search jobs."
+---
+
+```bash
+curl --fail-with-body 'https://soldfetch.com/v1/scrape/max' \
+  -H "Authorization: Bearer $SOLDFETCH_API_KEY" \
+  -H 'Content-Type: application/json' \
+  --data '{"keyword":"sony wh-1000xm5","ebaySite":"ebay.com","count":20,"maxPages":2,"resultType":"download"}'
+```
+
+This example permits at most two successful pages, each charged separately. The response includes a `jobId` and results URL. Do not blindly retry a job submission after an ambiguous network failure; check your existing jobs first.
+
+Poll `GET /v1/scrape/max/results/{jobId}` for progress and partial results. Download an owned export with `GET /v1/scrape/max/{jobId}/download.csv` using your API key. Cancel with `DELETE /v1/scrape/max/{jobId}`; an in-flight page may still finish and be charged.
+
+One job may be active per workspace. Jobs support up to 100 pages and retain results for 24 hours. They stop on empty or repeated pages, cancellation, quota exhaustion, or errors. Completion time depends on the scheduled worker. Emailed exports are unavailable.

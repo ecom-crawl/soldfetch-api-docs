@@ -1,0 +1,19 @@
+---
+title: "Errors and troubleshooting"
+description: "Respond to structured API errors."
+---
+
+| HTTP status | Action |
+| --- | --- |
+| 400 | Correct invalid parameters or remove unsupported capabilities. |
+| 401 | Check your key and credential header. |
+| 403 | Check workspace access, plan, quota, or requested interface. |
+| 409 | Resolve the idempotency conflict or active-job conflict. |
+| 429 | Reduce request rate or concurrency; honor `Retry-After`. |
+| 502 / 503 / 504 | Check service status; retry only within a bounded budget. |
+
+Read the returned `error` and `code` rather than relying on HTTP status alone. Record the `X-Request-Id` response header for support. Failed data requests consume no monthly quota.
+
+<Warning>
+Category-only sold searches may return HTTP 503 with `upstream_blocked` because eBay can require sign-in for those searches. A failure is not evidence of an empty market. Try a keyword search with a category filter where appropriate; do not silently substitute a broader search in an automated report.
+</Warning>

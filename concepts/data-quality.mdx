@@ -1,0 +1,20 @@
+---
+title: "Data quality and freshness"
+description: "Interpret listing evidence without overstating certainty."
+---
+
+## Prices
+
+Search results report displayed listing prices. A listing that accepted a best offer may not reveal the final paid amount. Do not label displayed prices as verified transaction prices, seller revenue, or accepted offers.
+
+## Dates
+
+Search sale dates are source-reported and unverified. Retrieval time indicates when SoldFetch obtained a response; it is not the sale time. Verified date windows and sale-date filters are unavailable. Preserve returned warnings and quality flags when storing or summarizing results.
+
+## Identity and ranking
+
+`exactMatch=true` excludes explicitly marked loose matches. It does not verify model, bundle, accessories, condition, or product identity. Price sorting does not guarantee verified price-plus-shipping order. Inspect relevant listing fields before computing comparisons.
+
+## Freshness
+
+Store retrieval timestamps alongside item IDs, marketplace, currency, condition, and the raw observation. A cached result is still a charged successful request. A change in listing evidence is an observation, not proof of a sale or revenue change.

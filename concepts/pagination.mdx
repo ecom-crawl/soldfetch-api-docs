@@ -1,0 +1,16 @@
+---
+title: "Pagination"
+description: "Collect bounded pages without duplicating results."
+---
+
+Search uses `page` from 1 to 100 and `count` from 1 to 200. Each successful page consumes one request. One search call does not guarantee 200 results or an exhaustive market history.
+
+Keep keyword, filters, marketplace, and `count` unchanged while advancing pages. Pagination is inferred; do not treat it as a reliable total count.
+
+1. Set an explicit page budget.
+2. Request the next page using a new idempotency key.
+3. Deduplicate items by marketplace and item ID.
+4. Stop on an empty page, `hasNextPage=false`, or a page containing no new item IDs.
+5. Stop when the page budget or quota is exhausted.
+
+A retry of the same page should reuse its original idempotency key. The [Python pagination example](https://github.com/ricciflow-api/soldfetch-api-examples/blob/main/examples/python/03_pagination.py) implements these stop conditions.

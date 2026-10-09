@@ -1,0 +1,33 @@
+---
+title: "Quickstart"
+description: "Search eBay sold listings in one request."
+---
+
+## Create an API key
+
+[Sign in to SoldFetch](https://soldfetch.com/auth/login?next=/dashboard), open **API keys**, and create a key. Keep it on your server and load it through an environment variable. Do not commit it to Git or embed it in frontend code.
+
+```bash
+export SOLDFETCH_API_KEY="YOUR_SOLDFETCH_API_KEY"
+curl --fail-with-body --get 'https://soldfetch.com/v1/scrape' \
+  --data-urlencode 'keyword=sony wh-1000xm5' \
+  --data-urlencode 'ebaySite=ebay.com' \
+  --data-urlencode 'count=20' \
+  -H "Authorization: Bearer $SOLDFETCH_API_KEY" \
+  -H 'Idempotency-Key: replace-with-a-unique-operation-id'
+```
+
+A successful response contains `items`, pagination information, and data-quality metadata. This request consumes one monthly request, even if it returns fewer than 20 items or an empty successful result. Errors consume zero.
+
+## Inspect a listing
+
+Take an `itemId` from search results and call `GET /v1/item/{itemId}`. Item lookup is a separate charged request. Use `sold=false` on `/v1/scrape` for active listings.
+
+## Check remaining quota
+
+```bash
+curl --fail-with-body 'https://soldfetch.com/usage' \
+  -H "Authorization: Bearer $SOLDFETCH_API_KEY"
+```
+
+Usage lookups consume no monthly requests. See [authentication](/authentication), [pagination](/concepts/pagination), and the [examples repository](https://github.com/ricciflow-api/soldfetch-api-examples).

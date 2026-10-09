@@ -1,0 +1,20 @@
+---
+title: "Authentication"
+description: "Authenticate with a server-side SoldFetch API key."
+---
+
+Send one credential header on authenticated requests:
+
+```http
+Authorization: Bearer YOUR_SOLDFETCH_API_KEY
+```
+
+`API-KEY`, `SOLDFETCH-API-KEY`, and `X-API-KEY` are also accepted. Use exactly one header; conflicting credentials are rejected. Never put keys in URLs, prompts, logs, or public source code.
+
+Keys belong to a workspace and share its quota and rate limits. Create and revoke keys in the [dashboard](https://soldfetch.com/dashboard). `/v1/capabilities` and the OpenAPI document are public. Compatibility aliases still require a SoldFetch key; their names do not mean anonymous access.
+
+## Retry a data request safely
+
+Set an `Idempotency-Key` for a single logical REST data operation. Reuse that key only when retrying the same inputs. A successful replay within 24 hours consumes no additional quota. Reusing it for different inputs returns HTTP 409. Use a new key for a new observation, page, or lookup. Do not assume this REST mechanism deduplicates separate MCP calls or job submissions.
+
+Server-to-server clients are recommended. Do not ship a workspace key to untrusted browsers.

@@ -1,0 +1,10 @@
+---
+title: "Observe listing prices"
+description: "Track observations with a bounded request budget."
+---
+
+Use `GET /v1/scrape` with `sold=false` to observe active listings. Choose a fixed marketplace, keyword, and count. Store each observation with item ID, displayed price, currency, condition, warnings, and retrieval timestamp.
+
+Use a fresh idempotency key for each scheduled observation; reuse it only if retrying that observation. Set an explicit daily budget before adding pages or item lookups. Deduplicate listings without discarding observation history.
+
+Compare like-for-like listings and currencies. A missing listing may have ended, moved, or become unavailable; it does not prove a sale. Send alerts from your own application after applying your own review rules.

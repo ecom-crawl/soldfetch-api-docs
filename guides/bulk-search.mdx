@@ -1,0 +1,15 @@
+---
+title: "Bulk keyword search"
+description: "Read progress and individual outcomes from an SSE stream."
+---
+
+```bash
+curl --fail-with-body --no-buffer 'https://soldfetch.com/api/bulk-search' \
+  -H "Authorization: Bearer $SOLDFETCH_API_KEY" \
+  -H 'Content-Type: application/json' \
+  --data '{"keywords":["sony wh-1000xm5","bose quietcomfort"],"count":20}'
+```
+
+Submit 1–20 keywords. The server emits SSE `progress`, `result`, `error`, and `complete` events. Parse events individually: HTTP 200 opens the stream and does not guarantee every keyword succeeded. Each successful keyword search consumes one request; failures consume zero.
+
+Set a keyword budget before starting. After a disconnect, do not automatically resubmit the whole batch, which could repeat successful work and consume more quota.

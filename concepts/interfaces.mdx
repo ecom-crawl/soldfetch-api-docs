@@ -1,0 +1,10 @@
+---
+title: "REST and MCP"
+description: "Choose the interface that fits your application."
+---
+
+REST supports listing searches, item lookup, account usage, request history, and bounded jobs. The [OpenAPI document](https://soldfetch.com/api/v1/openapi.json) defines the public contract.
+
+The hosted [MCP server](/guides/ai-agents) exposes `search_ebay_sold`, `search_ebay_category`, and `get_ebay_item`. Searches default to 20 results in MCP and 60 in REST. An explicit `count` may request up to 200. Both interfaces share workspace usage and limits.
+
+GraphQL is not a supported SoldFetch interface.

@@ -1,0 +1,17 @@
+---
+title: "Usage and billing"
+description: "Understand what consumes your monthly allowance."
+---
+
+| Plan | Monthly price (USD) | Included requests |
+| --- | ---: | ---: |
+| Basic | $0 | 100 |
+| Starter | $9 | 2,000 |
+| Growth | $29 | 10,000 |
+| Scale | $79 | 50,000 |
+
+One successful search page or item lookup consumes one request. Cache hits and empty successful results also consume one. Failed requests and successful idempotent replays consume zero. Bulk searches charge each successful keyword; jobs charge each successful page.
+
+Plans have hard monthly caps. Check [current pricing](https://soldfetch.com/pricing) before subscribing and [`GET /usage`](/api-reference/usage) for your workspace allowance. Account usage and request-history endpoints do not consume monthly requests. MCP discovery does not consume data units.
+
+The `X-SoldFetch-Usage-Units` response header records usage for REST data responses. Quota is shared by API keys and interfaces in the same workspace.

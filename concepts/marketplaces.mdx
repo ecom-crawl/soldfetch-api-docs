@@ -1,0 +1,19 @@
+---
+title: "Marketplaces"
+description: "Choose the eBay site for each request."
+---
+
+Set `ebaySite` to a regional hostname, not a country code.
+
+| Site | Market | Current launch availability |
+| --- | --- | --- |
+| `ebay.com` | United States | Enabled |
+| `ebay.co.uk` | United Kingdom | Enabled |
+| `ebay.de` | Germany | Enabled |
+| `ebay.fr` | France | Recognized, disabled |
+| `ebay.it` | Italy | Recognized, disabled |
+| `ebay.es` | Spain | Recognized, disabled |
+| `ebay.ca` | Canada | Recognized, disabled |
+| `ebay.com.au` | Australia | Recognized, disabled |
+
+Availability can change. Read [`/v1/capabilities`](https://soldfetch.com/v1/capabilities) before selecting a market. Preserve each result's currency, condition, and shipping context. Do not compare amounts in different currencies without explicit conversion assumptions.
