@@ -3,8 +3,17 @@ title: "Rate limits"
 description: "Bound concurrency and handle throttling."
 ---
 
-All plans allow 60 data requests per minute and five concurrent data requests per workspace. Multiple keys do not multiply these limits. Usage and request history share a separate 60-per-minute account limit.
+Limits are shared across all API keys in a workspace:
 
-Handle HTTP 429 explicitly. Honor `Retry-After` when returned. Use bounded backoff with jitter for transient failures; do not retry authentication, invalid inputs, unsupported capabilities, or exhausted quota indefinitely.
+| Plan | Data requests per minute | Concurrent data requests |
+| --- | ---: | ---: |
+| Basic | 10 | 1 |
+| Starter | 60 | 5 |
+| Growth | 60 | 5 |
+| Scale | 60 | 5 |
+
+Multiple keys do not multiply these limits. Usage and request history share a separate 60-per-minute account limit.
+
+HTTP 429 indicates a workspace rate, concurrency, or quota limit. Shared data-source capacity can also temporarily return HTTP 503 with code `upstream_rate_limited`. Failed requests consume zero units. Honor `Retry-After` when returned; its value is the number of seconds to wait before retrying. Use bounded backoff with jitter for transient failures; do not retry authentication, invalid inputs, unsupported capabilities, or exhausted quota indefinitely.
 
 Keep one idempotency key for retries of the same REST data request. Use a client timeout long enough for the API's request window, and record `X-Request-Id` when contacting support.
