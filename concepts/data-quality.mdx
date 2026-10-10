@@ -17,4 +17,6 @@ Search sale dates are source-reported and unverified. Retrieval time indicates w
 
 ## Freshness
 
+Successful search, category and item responses are cached for 24 hours from retrieval. Identical normalized queries share cached results across workspaces; cache hits keep the original retrieval timestamp and do not extend expiry.
+
 Store retrieval timestamps alongside item IDs, marketplace, currency, condition, and the raw observation. A cached result is still a charged successful request. A change in listing evidence is an observation, not proof of a sale or revenue change.
