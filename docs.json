@@ -137,7 +137,7 @@
   "description": "Search eBay sold and active listings, retrieve item details, and build resale research workflows with REST and MCP.",
   "seo": {
     "metatags": {
-      "canonical": "https://docs.soldfetch.com"
+      "canonical": "https://soldfetch.com/docs"
     }
   }
 }
