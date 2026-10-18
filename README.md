@@ -1,6 +1,6 @@
 # SoldFetch API documentation
 
-Source for [docs.soldfetch.com](https://soldfetch.com/docs), built with Mintlify. Adapted from the Glade documentation structure and green Almond theme for SoldFetch's eBay REST and MCP interfaces.
+Source for [soldfetch.com/docs](https://soldfetch.com/docs), built with Mintlify. Adapted from the Glade documentation structure and green Almond theme for SoldFetch's eBay REST and MCP interfaces.
 
 - `docs.json`: navigation and branding
 - `openapi.json`: public contract snapshot used by endpoint pages
