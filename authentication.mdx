@@ -17,4 +17,10 @@ Keys belong to a workspace and share its quota and rate limits. Create and revok
 
 Set an `Idempotency-Key` for a single logical REST data operation. Reuse that key only when retrying the same inputs. A successful replay within 24 hours consumes no additional quota. Reusing it for different inputs returns HTTP 409. Use a new key for a new observation, page, or lookup. Do not assume this REST mechanism deduplicates separate MCP calls or job submissions.
 
-Server-to-server clients are recommended. Do not ship a workspace key to untrusted browsers.
+## Browser access and CORS
+
+Keep your SoldFetch API key on your server. For a browser-based app, call your own backend rather than exposing a workspace key in frontend code.
+
+SoldFetch supports CORS only for explicitly allowed origins. Arbitrary third-party browser origins do not receive an `Access-Control-Allow-Origin` header. An `OPTIONS` preflight can return HTTP 204 without that header; the status alone does not grant browser access.
+
+CORS permission does not replace API-key authentication. Use the credential headers documented above for authenticated requests.
