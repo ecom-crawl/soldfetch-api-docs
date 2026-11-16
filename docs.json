@@ -47,6 +47,7 @@
           {
             "group": "Get started",
             "pages": [
+              "index",
               "introduction",
               "quickstart",
               "authentication"
